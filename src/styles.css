@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+#pasteBuf {
+    background-color: lightcyan;
+    width: 100%;
+    font-size: 8px;
+    font-weight: bold;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+}
