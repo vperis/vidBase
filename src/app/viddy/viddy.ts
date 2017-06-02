@@ -1,4 +1,4 @@
-export class Contact {
+export class Viddy {
     _id?: string;
     username: string;  
     vidname: string;    

@@ -1,0 +1,9 @@
+To deploy this on a new server do the following
+
+1. install node & npm
+2. copy .gitignore & package.json
+3. copy the source code over
+4. npm install  (this will copy all the npm modules that you need)
+5. ng build
+6. mongod &
+7. npm start

@@ -1,0 +1,42 @@
+<div *ngIf="viddy">
+    
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+            <h4 *ngIf="viddy._id">Metadata for selected video</h4>
+            <h3 *ngIf="!viddy._id">New Video</h3>
+        </div>
+        
+        <div class="panel-body">        
+
+            <form class="form-group">
+                <div class="form-group">
+                    <label for="viddy-vidname">Video Title</label>
+                    <input class="form-control" name="viddy-vidname" [(ngModel)]="viddy.vidname" placeholder="Video Title"/>
+                </div>
+                <div class="form-group">
+                    <label for="viddy-vtag">Video Tag</label>
+                    <input class="form-control" name="viddy-vtag" [(ngModel)]="viddy.videotag" placeholder="my-video-label"/>
+                </div>
+                <div class="form-group">
+                    <label for="viddy-username">username</label>
+                    <input class="form-control" name="viddy-username" [(ngModel)]="viddy.username" placeholder="username"/>
+                </div>
+                <div class="form-group">
+                    <label for="viddy-fburl">FB video URL</label>
+                    <input class="form-control" name="viddy-fburl" [(ngModel)]="viddy.fburl" placeholder="http://www.facebook.com/yourvideo.html"/>
+                </div>
+                <div class="form-group">
+                    <label for="viddy-embedurl">FB embedded frame URL</label>
+                    <input class="form-control" name="viddy-embedurl" [(ngModel)]="viddy.embedurl" placeholder="http://www.facebook.com/yourvideo.html"/>
+                </div>
+                <button class="btn btn-primary" *ngIf="!viddy._id" (click)="createViddy(viddy)">Create</button>
+                <button class="btn btn-info" *ngIf="viddy._id" (click)="updateViddy(viddy)">Update</button>
+                <button class="btn btn-danger" *ngIf="viddy._id" (click)="deleteViddy(viddy._id)">Delete</button>
+            </form>
+
+        </div>
+
+    </div>
+    
+</div>

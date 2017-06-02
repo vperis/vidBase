@@ -12,27 +12,27 @@
             <h3>List of Videos</h3>
             <ul class="list-group">
                 <li class="list-group-item"
-                    *ngFor="let contact of revVideoList | filter:{vidname: searchVideo}"
-                    (click)="selectContact(contact)"
-                    [class.active]="contact === selectedContact">
-                    {{contact.vidname}}
+                    *ngFor="let viddy of revVideoList | filter:{vidname: searchVideo}"
+                    (click)="selectViddy(viddy)"
+                    [class.active]="viddy === selectedViddy">
+                    {{viddy.vidname}}
                 </li>
             </ul>
-            <button class="btn btn-warning" (click)="createNewContact()">New</button>
+            <button class="btn btn-warning" (click)="createNewViddy()">New</button>
         </div>
 
         <div class="col-sm-6 col-md-offset-1">
             <div class="row">
-                <contact-details
-                                 [contact]="selectedContact"
-                                 [createHandler]="addContact"
-                                 [updateHandler]="updateContact"
-                                 [deleteHandler]="deleteContact">
-                </contact-details>
+                <viddy-details
+                                 [viddy]="selectedViddy"
+                                 [createHandler]="addViddy"
+                                 [updateHandler]="updateViddy"
+                                 [deleteHandler]="deleteViddy">
+                </viddy-details>
             </div>
 
             <div class="row">
-                <h3 *ngIf="selectedContact">{{selectedContact.vidname}}</h3>
+                <h3 *ngIf="selectedViddy">{{selectedViddy.vidname}}</h3>
             </div>
 
             <table>
