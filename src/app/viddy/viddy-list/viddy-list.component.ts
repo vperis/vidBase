@@ -63,7 +63,7 @@ export class ViddyListComponent implements OnInit {
             videoElement.scrollIntoView({ behavior: 'smooth' });  // get the video into view
         }
         else {
-            var linkElement = <HTMLInputElement> document.getElementById("pasteBuf");
+            var linkElement = <HTMLInputElement> document.getElementById("fbURLhtml");
             linkElement.value = "*---- VIDEO DELETED ----*";
         }
     }
