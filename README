@@ -7,3 +7,5 @@ To deploy this on a new server do the following
 5. ng build
 6. mongod &
 7. npm start
+
+don't forget to set the environment variable MONGODB_URI so that it can find the database
