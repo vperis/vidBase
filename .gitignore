@@ -30,6 +30,7 @@
 npm-debug.log
 testem.log
 /typings
+.elasticbeanstalk/
 
 # e2e
 /e2e/*.js
@@ -38,3 +39,8 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
