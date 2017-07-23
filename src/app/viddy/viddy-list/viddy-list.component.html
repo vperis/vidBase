@@ -1,15 +1,21 @@
 <div class="container">
     <div class="row" id="video-list">
         <div class="col-sm-5">
-            <!--                    <div class="filter-form">-->
-            <label for="filter-text">Filter Videos</label>
-            <input class="form-control" 
-                   name="search-video" 
-                   [(ngModel)]="searchVideo" 
-                   placeholder="Type few characters from video title"/>
-            <!--        </div>-->
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+
+                    <!--                    <div class="filter-form">-->
+                    <label for="filter-text">Filter Videos</label>
+                    <input class="form-control" 
+                           name="search-video" 
+                           [(ngModel)]="searchVideo" 
+                           placeholder="Type few characters from video title"/>
+                    <!--        </div>-->
+                </div>
+            </div>
             <br>
-            <h3>List of Videos</h3>
+            <h3>My Video Collection</h3>
             <ul class="list-group">
                 <li class="list-group-item"
                     *ngFor="let viddy of revVideoList | filter:{vidname: searchVideo}"
@@ -18,44 +24,42 @@
                     {{viddy.vidname}}
                 </li>
             </ul>
-            <button class="btn btn-warning" (click)="createNewViddy()">New</button>
+            <button class="btn btn-success" *ngIf="!editViddy" (click)="createNewViddy()">New Video</button>
+            <button class="btn btn-primary" *ngIf="!editViddy" (click)="setEditViddy()">Edit Meta</button>
+            <button class="btn btn-info" *ngIf="editViddy" (click)="setEditViddy()">Close Meta</button>
+            <button class="btn btn-warning" align="right" style="float: right;" (click)="scrollToVideoList()">Scroll Up</button>
+
         </div>
 
         <div class="col-sm-6 col-md-offset-1">
-            <div class="row">
+            <div class="row" *ngIf="editViddy">
                 <viddy-details
-                                 [viddy]="selectedViddy"
-                                 [createHandler]="addViddy"
-                                 [updateHandler]="updateViddy"
-                                 [deleteHandler]="deleteViddy">
+                               [showPanel]="editViddy"
+                               [viddy]="selectedViddy"
+                               [createHandler]="addViddy"
+                               [updateHandler]="updateViddy"
+                               [deleteHandler]="deleteViddy">
                 </viddy-details>
             </div>
+            <div [hidden]="editViddy || !selectedViddy">
 
-            <div class="row">
-                <h3 *ngIf="selectedViddy">{{selectedViddy.vidname}}</h3>
+                <table>
+                    <tbody>
+
+                        <tr>
+                            <th *ngIf="selectedViddy"> 
+                                <a target="_blank" href="/tag/{{fbVideoTag}}"><h3>{{selectedViddy.vidname}}</h3></a>
+                            </th> 
+                        </tr>
+                        <tr>
+                            <td id="fbURLhtml"> </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
             </div>
 
-            <table>
-                <tbody>
-                    <tr>
-                        <td id="fbURLhtml" colspan="3">
-                            Selected Video will appear here
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="btn btn-warning" (click)="scrollToVideoList()"> Top </button>
-                        </td>
-                        <td>
-                            <a target="_blank" 
-                               href="/tag/{{fbVideoTag}}">Click to open video</a>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            
         </div>
     </div>
 </div>

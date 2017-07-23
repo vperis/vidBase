@@ -1,12 +1,12 @@
-<div *ngIf="viddy">
-    
+<div *ngIf="showPanel">
+
     <div class="panel panel-default">
-        
+
         <div class="panel-heading">
-            <h4 *ngIf="viddy._id">Metadata for selected video</h4>
-            <h3 *ngIf="!viddy._id">New Video</h3>
+            <label *ngIf="viddy._id"><code>metadata for</code><h4>{{viddy.vidname}}</h4></label>
+            <label *ngIf="!viddy._id"><code>input data for</code><h3>New Video</h3> </label> 
         </div>
-        
+
         <div class="panel-body">        
 
             <form class="form-group">
@@ -31,6 +31,7 @@
                     <input class="form-control" name="viddy-embedurl" [(ngModel)]="viddy.embedurl" placeholder="http://www.facebook.com/yourvideo.html"/>
                 </div>
                 <button class="btn btn-primary" *ngIf="!viddy._id" (click)="createViddy(viddy)">Create</button>
+
                 <button class="btn btn-info" *ngIf="viddy._id" (click)="updateViddy(viddy)">Update</button>
                 <button class="btn btn-danger" *ngIf="viddy._id" (click)="deleteViddy(viddy._id)">Delete</button>
             </form>
@@ -38,5 +39,5 @@
         </div>
 
     </div>
-    
+
 </div>

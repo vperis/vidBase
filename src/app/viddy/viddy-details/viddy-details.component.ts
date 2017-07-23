@@ -10,6 +10,9 @@ import { ViddyService } from '../viddy.service';
 
 export class ViddyDetailsComponent {
   @Input()
+  showPanel: boolean;
+    
+  @Input()
   viddy: Viddy;
 
   @Input()
