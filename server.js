@@ -66,6 +66,7 @@ app.post("/api/fbvideos", function(req, res) {
     if (!req.body.vidname) {
         handleError(res, "Invalid user input", "Must provide a string.", 400);
         // TODO: need to do something more here, else this can cause a rather nasty problem
+        return;
     }
 
     db.collection(VIDEO_COLLECTION).insertOne(newVideo, function(err, doc) {

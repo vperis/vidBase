@@ -70,7 +70,6 @@ export class ViddyListComponent implements OnInit {
         }
     }
 
-
     createNewViddy() {
         var viddy : Viddy = {
             username: '',
@@ -111,11 +110,14 @@ export class ViddyListComponent implements OnInit {
     }
 
     addViddy = (viddy: Viddy) => {
-        this.viddys.push(viddy);
-        this.selectViddy(viddy);
-        this.editViddy = false;
 
-        this.revVideoList = this.viddys.slice().reverse(); // reverse the list
+        if ( viddy._id != null )  {  // do this only if we got a bona-fide viddy      
+            this.viddys.push(viddy);
+            this.selectViddy(viddy);
+            this.editViddy = false;
+            this.revVideoList = this.viddys.slice().reverse(); // reverse the list
+        }
+
         return this.viddys;
     }
 

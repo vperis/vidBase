@@ -5,4 +5,4 @@ export class Viddy {
     videotag: string;
     fburl: string;
     embedurl: string;
-}
+};
