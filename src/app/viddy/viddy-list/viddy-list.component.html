@@ -56,8 +56,13 @@
                 <div class="panel-heading">
 
                     <div layout="row" layout-margin> 
-                        <label for="filter-text">Filter Videos</label>
-
+                        <label align="left" style="float: left;" for="filter-text">Filter Videos
+                        </label>
+                        
+                        <label align="right" style="float: right;">
+                            <a name=filter-anchor href=#filter-anchor>Scroll Up</a>
+                        </label>
+                        
                         <input class="form-control row" 
                                name="search-video" 
                                (focus)="focusVideoList()"
