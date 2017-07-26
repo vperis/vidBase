@@ -68,30 +68,42 @@
                 </div>
             </div>
 
-            <div>
-                <label><font size="+2"> My Video Collection </font></label>
 
-                <button class="btn btn-success" align="right" style="float: right;" 
-                        *ngIf="!editViddy" (click)="createNewViddy()">New Video</button>
-                <button class="btn btn-primary" alight="right" style="float: right;" 
-                        *ngIf="!editViddy" [disabled]="selectedViddy==null" (click)="setEditViddy()">Edit Meta</button>
-                <button class="btn btn-info" style="float: right;" 
-                        *ngIf="editViddy" (click)="setEditViddy()">Close Meta</button>
+            <div class="container">
+                <div class="row">
+                    <div class="panel panel-default">
+                        
+                        <div class="panel-heading">
+
+                            <div>
+                                <label><font size="+1"> My Video Collection </font></label>
+
+                                <button class="btn btn-success" align="right" style="float: right;" 
+                                        *ngIf="!editViddy" (click)="createNewViddy()">New Video</button>
+                                <button class="btn btn-primary" alight="right" style="float: right;" 
+                                        *ngIf="!editViddy" [disabled]="selectedViddy==null" (click)="setEditViddy()">Edit Meta</button>
+                                <button class="btn btn-info" style="float: right;" 
+                                        *ngIf="editViddy" (click)="setEditViddy()">Close Meta</button>
+                            </div>
+                        </div>
+
+                        <table class="table table-fixed">
+                            <tbody>
+
+                                <tr class=list-group-item
+                                        *ngFor="let viddy of revVideoList | filter:{vidname: searchVideo}"
+                                        (click)="selectViddy(viddy)"
+                                        [class.active]="viddy === selectedViddy" >
+                                        {{viddy.vidname}}
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
             </div>
-
-            <ul class="list-group">
-                <li class="list-group-item"
-                    *ngFor="let viddy of revVideoList | filter:{vidname: searchVideo}"
-                    (click)="selectViddy(viddy)"
-                    [class.active]="viddy === selectedViddy">
-                    {{viddy.vidname}}
-                </li>
-            </ul>
-
+            
         </div>
-
-
     </div>
-
 </div>
-
