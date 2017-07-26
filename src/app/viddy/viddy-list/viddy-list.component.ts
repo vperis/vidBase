@@ -142,7 +142,7 @@ export class ViddyListComponent implements OnInit {
     focusVideoList() {
         this.selectedViddy = null;
         this.editViddy = false;
-        document.getElementById("video-list").scrollIntoView({ behavior: 'smooth' });  // go back to the top
+        document.getElementById("filter-panel").scrollIntoView({ behavior: 'smooth' });  // go back to the top
     }
     
 }
