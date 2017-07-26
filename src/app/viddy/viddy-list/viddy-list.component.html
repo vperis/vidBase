@@ -1,21 +1,84 @@
 <div class="container">
-    <div class="row" id="video-list">
-        <div class="col-sm-5">
+
+    <!-- This is the block with the video    -->
+
+    <div [hidden]="editViddy || !selectedViddy">
+
+        <table>
+            <tbody>
+
+                <tr>
+                    <th *ngIf="selectedViddy"> 
+                        <a target="_blank" href="/tag/{{fbVideoTag}}"><h3>{{selectedViddy.vidname}}</h3></a>
+                    </th> 
+                </tr>
+                <tr>
+                    <td id="fbURLhtml"> </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- This is the Meta Data Panel   -->
+
+    <div class="row" *ngIf="editViddy">
+        <viddy-details
+                       [showPanel]="editViddy"
+                       [viddy]="selectedViddy"
+                       [createHandler]="addViddy"
+                       [updateHandler]="updateViddy"
+                       [deleteHandler]="deleteViddy">
+        </viddy-details>
+    </div>
+
+
+    <div id="video-list">
+
+        <div class="row" >
+
+
+
+            <!-- this doesn't seem relevant anymore
+<button class="btn btn-warning" align="right" style="float: right;" (click)="scrollToVideoList()">List</button>
+-->
+
+        </div>
+
+        <!-- This is the Video List  -->
+
+
+        <div class="row">
+
             <div class="panel panel-default">
 
                 <div class="panel-heading">
 
-                    <!--                    <div class="filter-form">-->
-                    <label for="filter-text">Filter Videos</label>
-                    <input class="form-control" 
-                           name="search-video" 
-                           [(ngModel)]="searchVideo" 
-                           placeholder="Type few characters from video title"/>
-                    <!--        </div>-->
+                    <div layout="row" layout-margin> 
+                        <label for="filter-text">Filter Videos</label>
+
+                        <input class="form-control row" 
+                               name="search-video" 
+                               (focus)="focusVideoList()"
+                               [(ngModel)]="searchVideo" 
+                               placeholder="Type few characters from video title"/>
+
+                    </div>
                 </div>
             </div>
-            <br>
-            <h3>My Video Collection</h3>
+
+            <div>
+                <label><font size="+2"> My Video Collection </font></label>
+
+                <button class="btn btn-success" align="right" style="float: right;" 
+                        *ngIf="!editViddy" (click)="createNewViddy()">New Video</button>
+                <button class="btn btn-primary" alight="right" style="float: right;" 
+                        *ngIf="!editViddy" [disabled]="selectedViddy==null" (click)="setEditViddy()">Edit Meta</button>
+                <button class="btn btn-info" style="float: right;" 
+                        *ngIf="editViddy" (click)="setEditViddy()">Close Meta</button>
+            </div>
+
             <ul class="list-group">
                 <li class="list-group-item"
                     *ngFor="let viddy of revVideoList | filter:{vidname: searchVideo}"
@@ -24,43 +87,11 @@
                     {{viddy.vidname}}
                 </li>
             </ul>
-            <button class="btn btn-success" *ngIf="!editViddy" (click)="createNewViddy()">New Video</button>
-            <button class="btn btn-primary" *ngIf="!editViddy" (click)="setEditViddy()">Edit Meta</button>
-            <button class="btn btn-info" *ngIf="editViddy" (click)="setEditViddy()">Close Meta</button>
-            <button class="btn btn-warning" align="right" style="float: right;" (click)="scrollToVideoList()">Scroll Up</button>
 
         </div>
 
-        <div class="col-sm-6 col-md-offset-1">
-            <div class="row" *ngIf="editViddy">
-                <viddy-details
-                               [showPanel]="editViddy"
-                               [viddy]="selectedViddy"
-                               [createHandler]="addViddy"
-                               [updateHandler]="updateViddy"
-                               [deleteHandler]="deleteViddy">
-                </viddy-details>
-            </div>
-            <div [hidden]="editViddy || !selectedViddy">
 
-                <table>
-                    <tbody>
-
-                        <tr>
-                            <th *ngIf="selectedViddy"> 
-                                <a target="_blank" href="/tag/{{fbVideoTag}}"><h3>{{selectedViddy.vidname}}</h3></a>
-                            </th> 
-                        </tr>
-                        <tr>
-                            <td id="fbURLhtml"> </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-
-            </div>
-
-        </div>
     </div>
+
 </div>
 

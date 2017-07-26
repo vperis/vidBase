@@ -87,7 +87,7 @@ export class ViddyListComponent implements OnInit {
 
     // sets the editViddy to true so the edit panel is displayed and video panel is hidden
     setEditViddy () {
-        if ( this.editViddy ) {
+        if ( this.editViddy || this.selectedViddy == null ) {
             this.editViddy = false;
         } 
         else { 
@@ -138,4 +138,11 @@ export class ViddyListComponent implements OnInit {
         document.getElementById("video-list").scrollIntoView({ behavior: 'smooth' });  // go back to the top
     }
 
+        // scrolls to the top of the page
+    focusVideoList() {
+        this.selectedViddy = null;
+        this.editViddy = false;
+        document.getElementById("video-list").scrollIntoView({ behavior: 'smooth' });  // go back to the top
+    }
+    
 }

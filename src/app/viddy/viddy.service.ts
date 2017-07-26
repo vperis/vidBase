@@ -44,6 +44,7 @@ export class ViddyService {
             .catch(this.handleError);
     }
 
+    // I added this as an example if you want to do something more sophisticated in the Promise "then" handler
     private extractViddy (res : Response) {
         let rViddy : Viddy = res.json();
         return rViddy;
@@ -52,11 +53,12 @@ export class ViddyService {
 
     private handleError (error: any) {
         let errMsg = (error.message) ? error.message :
-        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+                        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead
 
         // promise needs to return a viddy, so create a dummy one
         let rViddy = new Viddy();
         return rViddy;
     }
+    
 }
