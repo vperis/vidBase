@@ -7,7 +7,7 @@
         <table>
             <tbody>
 
-                <tr>
+                <tr id="video-heading">
                     <th *ngIf="selectedViddy"> 
                         <a target="_blank" href="/tag/{{fbVideoTag}}"><h3>{{selectedViddy.vidname}}</h3></a>
                     </th> 
@@ -62,7 +62,7 @@
                                name="search-video" 
                                (focus)="focusVideoList()"
                                [(ngModel)]="searchVideo" 
-                               placeholder="Type few characters from video title"/>
+                               placeholder="Type few characters from video title">
 
                     </div>
                 </div>

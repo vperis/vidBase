@@ -59,10 +59,11 @@ export class ViddyListComponent implements OnInit {
             //  this line of code took me hours to figure out.
             //  It pushes the URL out to viddy-list.component.html
 
-            var videoElement = document.getElementById("fbURLhtml");  // get the Page element to replace
+            let videoElement = document.getElementById("fbURLhtml");  // get the Page element to replace
             videoElement.innerHTML = this.fbVideoURL.valueOf(); // TODO: Need to put some validation here before I display
 
-            videoElement.scrollIntoView({ behavior: 'smooth' });  // get the video into view
+            let videoHeading = document.getElementById("video-heading");
+            videoHeading.scrollIntoView({ behavior: 'smooth' });  // get the video into view
         }
         else {
             var linkElement = <HTMLInputElement> document.getElementById("fbURLhtml");
@@ -81,7 +82,10 @@ export class ViddyListComponent implements OnInit {
 
         // By default, a newly-created viddy will have the selected state.
         this.selectedViddy = viddy;    
-        this.editViddy = true;      // so video panel is hidden
+        this.editViddy = true;     // show the edit panel
+        
+        let editPanel = document.getElementById("edit-panel");
+        editPanel.scrollIntoView({ behavior: 'smooth' });  // get the edit panel into view
 
     }
 
@@ -92,6 +96,8 @@ export class ViddyListComponent implements OnInit {
         } 
         else { 
             this.editViddy = true; 
+            let editPanel = document.getElementById("edit-panel");
+            editPanel.scrollIntoView({ behavior: 'smooth' });  // get the edit panel into view
         }
     }
 
@@ -140,8 +146,8 @@ export class ViddyListComponent implements OnInit {
 
         // scrolls to the top of the page
     focusVideoList() {
-        this.selectedViddy = null;
-        this.editViddy = false;
+//        this.selectedViddy = null;
+//        this.editViddy = false;
         document.getElementById("filter-panel").scrollIntoView({ behavior: 'smooth' });  // go back to the top
     }
     

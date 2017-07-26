@@ -2,7 +2,7 @@
   width: 97%;
 }
 .table-fixed tbody {
-  height: 400px;
+  height: 360px;
   overflow-y: auto;
   width: 100%;
 }
